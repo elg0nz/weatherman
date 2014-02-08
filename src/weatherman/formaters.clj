@@ -6,6 +6,13 @@
   (json/read-str
     (get document :body )))
 
+(defn- hash-to-json
+  [input] (json/write-str input))
+
+(defn board
+  ([input] (hash-to-json {:info input, :color :darko}))
+  ([input color] (hash-to-json {:info input, :color color})))
+
 (defn get-item
   [body]
   (get-in body ["query" "results" "channel" "item"]))

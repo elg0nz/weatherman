@@ -13,3 +13,11 @@
 
 (deftest get-condition-text-test
   (is (= (get-condition-text {"condition" {"text" "sunny"}}) "sunny")))
+
+(deftest board-test
+  (is (= (board "[some large text]") "{\"info\":\"[some large text]\",\"color\":\"darko\"}"))
+)
+
+(deftest board-color-test
+  (is (= (board "[some large text]" "scorcho") "{\"info\":\"[some large text]\",\"color\":\"scorcho\"}"))
+)
