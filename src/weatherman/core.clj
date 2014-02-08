@@ -5,6 +5,7 @@
 (require '[weatherman.conversions :as conversions])
 (require '[weatherman.formaters :as formaters])
 (require '[taoensso.carmine :as car :refer (wcar)])
+(use 'overtone.at-at)
 
 (def server1-conn
   {:pool {} :spec {:host "127.0.0.1" :port 6379}})
@@ -13,7 +14,7 @@
 
 (defn store-in-redis
   [statuses]
-  (wcar* (car/lpush "status_msgs" (formaters/board statuses)))
+  (wcar* (car/lpush "status_msgs" (formaters/board statuses :scorcho)))
   (wcar* (car/publish "statuses" "ok")))
 
 (def fetch-weather
@@ -27,7 +28,15 @@
       (->> item (formaters/get-condition-text))
       ]))
 
-(defn -main
-  [& raw-args]
+(defn get-weather
+  []
   (print display)
   (store-in-redis display))
+
+(def half-minute (* 30 1000))
+(def thread-pool (mk-pool))
+
+(defn -main
+  [& raw-args]
+  (get-weather)
+  (every half-minute #(get-weather) thread-pool))

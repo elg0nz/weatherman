@@ -8,4 +8,4 @@
                  [org.clojure/data.json "0.2.3"]
                  [clj-http "0.7.7"]
                  [com.taoensso/carmine "2.4.6"]
-                 ])
+                 [overtone/at-at "1.2.0"]])
