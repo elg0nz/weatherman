@@ -1,4 +1,4 @@
-# weatherman
+# Weatherman
 
 Clojure app to display Weather status and predictions.
 
