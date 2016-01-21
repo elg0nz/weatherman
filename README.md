@@ -6,9 +6,9 @@ Clojure app to display Weather status and predictions.
 
     $ java -jar weatherman-0.1.0-standalone.jar [args]
 
-## Options
+## Testing
 
-FIXME: listing of options this app accepts.
+$ lein test
 
 
 ## License
