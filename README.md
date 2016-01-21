@@ -1,6 +1,6 @@
 # Weatherman
 
-Clojure app to display Weather status and predictions.
+A Clojure app to display Weather status and predictions.
 
 ## Usage
 
